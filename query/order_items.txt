@@ -1,0 +1,10 @@
+CREATE TABLE order_items (
+    order_id VARCHAR(50) REFERENCES orders(order_id),
+    order_item_id INT NOT NULL,
+    product_id VARCHAR(50) REFERENCES products(product_id),
+    seller_id VARCHAR(50) REFERENCES sellers(seller_id),
+    shipping_limit_date TIMESTAMP,
+    price DECIMAL(10, 2),
+    freight_value DECIMAL(10, 2),
+    PRIMARY KEY (order_id, order_item_id)
+);
