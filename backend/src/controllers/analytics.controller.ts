@@ -86,11 +86,12 @@ export const topCategories = async (req: Request, res: Response) => {
   if (end)   { params.push(end);   where += ` AND o.order_purchase_timestamp::date <= $${params.length}`; }
 
   const q = `
-    SELECT COALESCE(p.product_category_name, 'unknown') AS category,
+    SELECT COALESCE(c.product_category_name_english, 'unknown') AS category,
            COUNT(*)::int AS items_count
     FROM order_items oi
     JOIN products p USING (product_id)
     JOIN orders o USING (order_id)
+    INNER JOIN category_name_translation c ON p.product_category_name=c.product_category_name
     WHERE ${where}
     GROUP BY category
     ORDER BY items_count DESC

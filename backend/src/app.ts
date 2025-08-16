@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes';
 import geoRoutes from './routes/geo.routes';
 import metaRoutes from './routes/meta.routes';
 import analyticsRoutes from './routes/analytics.routes';
+import analyticsExtraRoutes from "./routes/analytics.extra.routes";
 import { errorHandler } from './middleware/error';
 import { env } from './utils/env';
 
@@ -29,6 +30,7 @@ app.get('/api/health', (_req, res) => {
 });
 app.use('/api/auth', authRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use("/api/analytics", analyticsExtraRoutes);
 app.use('/api/geo',geoRoutes);
 app.use('/api/meta', metaRoutes);
 
