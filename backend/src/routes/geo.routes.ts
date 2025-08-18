@@ -8,7 +8,7 @@ import {
 
 const r = Router();
 
-r.use(auth); // Semua endpoint geo butuh auth
+// r.use(auth); // Semua endpoint geo butuh auth
 
 // /api/geo/states/choropleth?start=&end=&category=&metric=orders|delivery_days|freight
 r.get("/states/choropleth", choroplethStates);

@@ -24,8 +24,8 @@ export default function HomePage() {
         </main>
 
         <div className="mt-12 text-center flex justify-center gap-4">
-          <Link to="/login" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Login</Link>
-          <Link to="/register" className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Register</Link>
+          <Link to="/dashboard" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Dashboard</Link>
+          {/* <Link to="/register" className="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Register</Link> */}
         </div>
       </div>
     </div>

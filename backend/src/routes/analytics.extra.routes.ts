@@ -14,7 +14,7 @@ import {
 } from "../controllers/analytics.extra.controller";
 
 const r = Router();
-r.use(auth);
+// r.use(auth);
 
 r.get("/sla", slaSummary);
 r.get("/funnel", statusFunnel);

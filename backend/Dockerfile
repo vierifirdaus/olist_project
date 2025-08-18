@@ -12,7 +12,6 @@ RUN npm install
 
 # Salin sisa kode aplikasi
 COPY . .
-
 # Build kode TypeScript menjadi JavaScript
 RUN npm run build
 

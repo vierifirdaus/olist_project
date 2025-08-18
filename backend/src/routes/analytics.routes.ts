@@ -5,7 +5,7 @@ import {
 } from '../controllers/analytics.controller';
 
 const r = Router();
-r.use(auth); // semua butuh token
+// r.use(auth); // semua butuh token
 
 r.get('/delivered/daily', deliveredDaily);
 r.get('/delivered/monthly', deliveredMonthly);

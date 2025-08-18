@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
-  withCredentials: true, // penting untuk cookie httpOnly
+  baseURL: "http://212.85.26.216:5002/api",
+  withCredentials: false, // penting untuk cookie httpOnly
 });
 
 api.interceptors.response.use(

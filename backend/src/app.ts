@@ -12,18 +12,26 @@ import { env } from './utils/env';
 
 const app: Application = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
-// CORS
-const CORS_ORIGIN = env('CORS_ORIGIN', 'http://localhost:5173');
+
+
+// Ganti '*' dengan origin frontend Anda yang spesifik
 app.use(
   cors({
-    origin: CORS_ORIGIN,
-    credentials: true,
+    origin: "http://212.85.26.216:5173", // <- Beri tahu origin mana yang diizinkan
+    credentials: true,                    // <- Izinkan pengiriman credentials
+    methods: ["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS"],
   })
 );
+
 
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true, service: 'olist-backend' });

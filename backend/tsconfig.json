@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "target": "es2016",
     "module": "commonjs",
+    "outDir": "./dist",
     "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist"
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
   },
-  "lib": ["es2015"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "eslint.config.mts"] // <-- Tambahkan eslint.config.mts di sini
 }

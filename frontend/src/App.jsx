@@ -21,17 +21,17 @@ export default function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute>
+            
               <MainLayout><DashboardPage /></MainLayout>
-            </ProtectedRoute>
+            
           }
         />
         <Route
           path="/geo"
           element={
-            <ProtectedRoute>
+            
               <MainLayout><GeoPage /></MainLayout>
-            </ProtectedRoute>
+            
           }
         />
 

@@ -1,3 +1,5 @@
+// backend/src/controllers/meta.controller.ts
+
 import { Request, Response } from "express";
 import { pgPool } from "../config/pgPool";
 
@@ -9,7 +11,8 @@ export const listCategories = async (_req: Request, res: Response) => {
     ORDER BY 1;
   `;
   const { rows } = await pgPool.query(q);
-  res.json({ data: rows.map(r => r.category) });
+  // Tambahkan tipe { category: string }
+  res.json({ data: rows.map((r: { category: string }) => r.category) });
 };
 
 export const listStates = async (_req: Request, res: Response) => {
@@ -20,5 +23,6 @@ export const listStates = async (_req: Request, res: Response) => {
     ORDER BY 1;
   `;
   const { rows } = await pgPool.query(q);
-  res.json({ data: rows.map(r => r.state) });
+  // Tambahkan tipe { state: string }
+  res.json({ data: rows.map((r: { state: string }) => r.state) });
 };

@@ -13,7 +13,6 @@ export default function MainLayout({ children }) {
           <Link to="/" className="text-gray-600 hover:text-blue-600">Home</Link>
           <Link to="/dashboard" className="text-gray-600 hover:text-blue-600">Dashboard</Link>
           <Link to="/geo" className="text-gray-600 hover:text-blue-600">Geo</Link>
-          <Button danger onClick={logout}>Logout</Button>
         </div>
       </nav>
       <div className="p-4">{children}</div>

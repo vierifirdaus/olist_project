@@ -10,8 +10,8 @@ const PORT = env('PORT');
     await ensureGeoMaterializedViews();
     await sequelize.authenticate();
     await sequelize.sync(); // sync tabel users
-    app.listen(Number(PORT), () => {
-      console.log(`[server] listening on http://localhost:${PORT}`);
+    app.listen(5002, '0.0.0.0', () => {
+      console.log(`[server] listening on http://0.0.0.0:${5002}`);
     });
   } catch (err) {
     console.error('[server] failed to start:', err);
