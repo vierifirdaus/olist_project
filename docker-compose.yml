@@ -1,42 +1,24 @@
 version: "3.9"
 
 services:
-  spark-master:
+  backend:
     build:
-      context: .                      # <— root project
-      dockerfile: docker/spark/Dockerfile
-    image: local/spark:3.5
-    container_name: spark-master
-    environment:
-      SPARK_MODE: master
-      # diteruskan dari .env Anda (jangan hardcode di repo!)
-      AZURE_STORAGE_ACCOUNT: ${AZURE_STORAGE_ACCOUNT}
-      AZURE_STORAGE_KEY: ${AZURE_STORAGE_KEY}
-      AZURE_BLOB_CONTAINER: ${AZURE_BLOB_CONTAINER}
-      AZURE_BLOB_BASE: ${AZURE_BLOB_BASE}
-    volumes:
-      - ./spark/jobs:/opt/spark/jobs
-      - ./spark/conf:/opt/spark/conf
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
     ports:
-      - "7077:7077"     # Spark master RPC
-      - "8081:8080"     # Spark master UI
+      - "8000:8000"
+    env_file:
+      - ./backend/.env  # <-- Tambahkan baris ini
 
-  spark-worker:
+  frontend:
     build:
-        context: .                      # <— root project
-        dockerfile: docker/spark/Dockerfile
-    image: local/spark:3.5
-    container_name: spark-worker
-    depends_on: [spark-master]
-    environment:
-      SPARK_MODE: worker
-      SPARK_MASTER_URL: spark://spark-master:7077
-      AZURE_STORAGE_ACCOUNT: ${AZURE_STORAGE_ACCOUNT}
-      AZURE_STORAGE_KEY: ${AZURE_STORAGE_KEY}
-      AZURE_BLOB_CONTAINER: ${AZURE_BLOB_CONTAINER}
-      AZURE_BLOB_BASE: ${AZURE_BLOB_BASE}
-    volumes:
-      - ./spark/jobs:/opt/spark/jobs
-      - ./spark/conf:/opt/spark/conf
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
     ports:
-      - "8082:8081"     # Spark worker UI
+      - "3000:3000"
+    depends_on:
+      - backend
+    env_file:
+      - ./frontend/.env  # <-- Tambahkan baris ini
